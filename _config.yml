@@ -3,16 +3,16 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Cbigdream
+title: 昨夜梦飞花
 subtitle:
 description:
-author: Cbigdream
+author: 昨夜梦飞花
 language: zh-CN
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://blog.cbigdream.com
+url: http://channelsray.github.io
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -72,11 +72,31 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next
+theme: yilia
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:cbigdream/cbigdream.github.io.git
+  repo: https://github.com/channelsray/channelsray.github.io.git
   branch: master
+  message: theme yilia
+
+jsonContent:
+   meta: false
+   pages: false
+   posts:
+     title: true
+     date: true
+     path: true
+     text: false
+     raw: false
+     content: false
+     slug: false
+     updated: false
+     comments: false
+     link: false
+     permalink: false
+     excerpt: false
+     categories: false
+     tags: true
