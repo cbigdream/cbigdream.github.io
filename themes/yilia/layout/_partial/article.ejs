@@ -130,3 +130,7 @@
     }) %>
   <% } %>
 <% } %>
+
+<% if (theme.mathjax && post.mathjax){ %>
+<%- partial('mathjax') %>
+<% } %>

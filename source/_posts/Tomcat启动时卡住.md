@@ -1,5 +1,5 @@
 ---
-title: Tomcat启动时卡住
+title: Tomcat启动时卡住不动
 date: 2019-05-23 14:49:32
 categories: 技术
 tags: [linux, tomcat]
