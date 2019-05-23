@@ -1,7 +1,7 @@
 ---
 title: Linux配置tomcat自动启动
 date: 2019-05-22 21:15:00
-categories: linux
+categories: 技术
 tags: [linux,tomcat]
 ---
 将tomcat配置成linux service，跟随linux启动
