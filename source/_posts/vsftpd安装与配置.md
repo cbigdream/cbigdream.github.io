@@ -174,7 +174,7 @@ data_connection_timeout=8
 /etc/vsftpd.chroot_list 中加入root用户作为例外，可以不被限制在主目录下
 /etc/allow_users 中加入允许登陆的用户
 ## 2. 创建用户
-```
+```shell
 useradd -d /home/temp temp
 passwd temp
 usermod -s /usr/sbin/nologin temp

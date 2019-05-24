@@ -72,7 +72,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: yilia
+theme: Annie
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
@@ -111,3 +111,10 @@ sitemap:
   path: sitemap.xml
 baidusitemap: 
   path: baidusitemap.xml
+
+search:
+  path: search.json
+  zipPath: search.zip
+  versionPath: searchVersion.txt
+  field: post
+  #field: post, page or all

@@ -32,7 +32,7 @@ post_asset_folder: true
 形式插入的图片，主要分为两步
 ##### 1. ctrl+shift+P 找到 Markdown Preview Enhanced: Extend Parser，打开parser.js
 ##### 2. 修改其中onWillParseMarkdown方法为：
-```
+```javascript
 onWillParseMarkdown: function(markdown) {
   return new Promise((resolve, reject)=> {
     markdown = markdown.replace(
