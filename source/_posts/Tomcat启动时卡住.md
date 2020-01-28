@@ -3,7 +3,7 @@ title: Tomcat启动时卡住不动
 date: 2019-05-23 14:49:32
 categories: 技术
 tags: [linux, tomcat]
-
+cover: https://i.loli.net/2020/01/28/BYZE6D47izy1aJq.jpg
 ---
 tomcat启动以后卡在INFO: Deploying web application directory ...
 

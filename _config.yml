@@ -3,10 +3,10 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 昨夜梦飞花
+title: 九住
 subtitle:
 description:
-author: 昨夜梦飞花
+author: channelsray
 language: zh-CN
 timezone:
 
@@ -38,7 +38,7 @@ post_asset_folder: true
 relative_link: false
 future: true
 highlight:
-  enable: true
+  enable: false
   line_number: true
   auto_detect: false
   tab_replace:
@@ -72,7 +72,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: Annie
+theme: nexmoe
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
@@ -98,7 +98,7 @@ jsonContent:
      link: false
      permalink: false
      excerpt: false
-     categories: false
+     categories: true
      tags: true
 plugins:
     hexo-generator-feed
