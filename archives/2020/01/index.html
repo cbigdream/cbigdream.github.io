@@ -3,7 +3,7 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
   
-  <title>Linux配置tomcat自动启动 - 九住</title>
+  <title>文章归档：2020/1 - 九住</title>
   <meta charset="UTF-8">
   <meta name="description" content>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -11,18 +11,13 @@
   
 
   <link rel="shortcut icon" href="/favicon.ico" type="image/png">
-  <meta name="description" content="将tomcat配置成linux service，跟随linux启动">
-<meta name="keywords" content="linux,tomcat">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Linux配置tomcat自动启动">
-<meta property="og:url" content="https://channelsray.github.io/2019/05/22/Linux配置tomcat自动启动/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="九住">
+<meta property="og:url" content="https://channelsray.github.io/archives/2020/01/index.html">
 <meta property="og:site_name" content="九住">
-<meta property="og:description" content="将tomcat配置成linux service，跟随linux启动">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-28T04:53:03.480Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Linux配置tomcat自动启动">
-<meta name="twitter:description" content="将tomcat配置成linux service，跟随linux启动">
+<meta name="twitter:title" content="九住">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.15.8/styles/atom-one-dark.css">
    
@@ -30,7 +25,7 @@
   
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
-  <link rel="stylesheet" href="/css/style.css?v=1580218283467">
+  <link rel="stylesheet" href="/css/style.css?v=1580218283719">
 </head>
 
 <body class="mdui-drawer-body-left">
@@ -149,66 +144,37 @@
   </div>
   <div id="nexmoe-content">
     <div class="nexmoe-primary">
-        <div class="nexmoe-post">
-    <div class="nexmoe-post-cover"> 
-        
-        <img src="https://i.loli.net/2020/01/28/LsQX7fMbogHA8lG.jpg">
-        
-        <h1>Linux配置tomcat自动启动</h1>
+        <section class="nexmoe-posts" id="brand-waterfall">
+    
+    <div class="nexmoe-post">
+        <a href="/2020/01/28/使用caddy作为HTTPS服务器/">
+            <div class="nexmoe-post-cover mdui-ripple"> 
+                
+                <img src="https://i.loli.net/2020/01/28/7zdcqnKFT5CRjku.jpg" alt="使用caddy作为HTTPS服务器">
+                
+                <h1>使用caddy作为HTTPS服务器</h1>
+            </div>
+        </a>
+        <div class="nexmoe-post-meta">
+            <a><i class="nexmoefont icon-calendar-fill"></i>2020年01月28日</a>
+            <a><i class="nexmoefont icon-areachart"></i>257 字</a>
+            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
+            
+                <a class="nexmoefont icon-appstore-fill -link" href="/categories/技术/">技术</a>
+            
+            
+                <a class="nexmoefont icon-tag-fill -link" href="/tags/caddy/">caddy</a> <a class="nexmoefont icon-tag-fill -link" href="/tags/https/">https</a> <a class="nexmoefont icon-tag-fill -link" href="/tags/linux/">linux</a>
+            
+        </div>
+        <article>
+            
+            <p>用Caddy的插件forwardproxy可以快速搭建HTTPS服务器，可以不用手动配置ssl证书</p>
+            
+        </article>
     </div>
-  <div class="nexmoe-post-meta">
-    <a><i class="nexmoefont icon-calendar-fill"></i>2019年05月22日</a>
-    <a><i class="nexmoefont icon-areachart"></i>90 字</a>
-    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
     
-      <a class="nexmoefont icon-appstore-fill -link" href="/categories/技术/">技术</a>
-    
-    
-      <a class="nexmoefont icon-tag-fill -link" href="/tags/linux/">linux</a> <a class="nexmoefont icon-tag-fill -link" href="/tags/tomcat/">tomcat</a>
-    
-  </div>
-  <article>
-    <p>将tomcat配置成linux service，跟随linux启动</p>
-<a id="more"></a> 
-<h2 id="1-编辑tomcat-bin-catalina-sh"><a href="#1-编辑tomcat-bin-catalina-sh" class="headerlink" title="1. 编辑tomcat/bin/catalina.sh"></a>1. 编辑tomcat/bin/catalina.sh</h2><p>在catalina.sh中添加java和tomcat环境变量</p>
-<pre><code class="shell">CATALINA_HOME=/usr/local/tomcat
-JAVA_HOME=/usr/lib/java/jdk1.7.0_79</code></pre>
-<p>根据实际情况配置环境变量，然后将catalina.sh复制到/etc/init.d/目录下</p>
-<pre><code class="shell">cp tomcat/bin/catalina.sh /etc/init.d/tomcat</code></pre>
-<h2 id="2-更新tomcat-service，并启动："><a href="#2-更新tomcat-service，并启动：" class="headerlink" title="2. 更新tomcat service，并启动："></a>2. 更新tomcat service，并启动：</h2><pre><code class="shell">update-rc.d tomcat defaults
-service tomcat start</code></pre>
-
-  </article>
-  
-    
-<div class="nexmoe-post-copyright">
-<i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
-<strong>本文作者：</strong>channelsray<br>
-<strong>本文链接：</strong><a href="https://channelsray.github.io/2019/05/22/Linux配置tomcat自动启动/" title="https://channelsray.github.io/2019/05/22/Linux配置tomcat自动启动/" target="_blank" rel="noopener">https://channelsray.github.io/2019/05/22/Linux配置tomcat自动启动/</a><br>
-
-  <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
-
-</div>
-
-
-  
-  <section class="nexmoe-comment">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.css">
-<div id="gitalk"></div>
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.js"></script>
-<script type="text/javascript">
-    var gitalk = new Gitalk({
-        clientID: '80b2453b6d5f37ad6225',
-        clientSecret: '43e99fa852795c9a7b3eb924b2558c64b84bbdeb',
-        id: window.location.pathname,
-        repo: 'nexmoe.github.io',
-        owner: 'nexmoe',
-        admin: 'nexmoe'
-    })
-    gitalk.render('gitalk')
-</script>
 </section>
-</div>
+
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/js/mdui.min.js"></script>
@@ -224,7 +190,7 @@ service tomcat start</code></pre>
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script src="/js/app.js?v=1580218283473"></script>
+<script src="/js/app.js?v=1580218283723"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
 
 
