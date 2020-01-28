@@ -43,7 +43,7 @@
     <link href="https://channelsray.github.io/2019/05/23/Tomcat%E5%90%AF%E5%8A%A8%E6%97%B6%E5%8D%A1%E4%BD%8F/"/>
     <id>https://channelsray.github.io/2019/05/23/Tomcat启动时卡住/</id>
     <published>2019-05-23T06:49:32.000Z</published>
-    <updated>2020-01-28T02:37:20.744Z</updated>
+    <updated>2020-01-28T04:22:32.709Z</updated>
     
     <content type="html"><![CDATA[<p>tomcat启动以后卡在INFO: Deploying web application directory …</p><a id="more"></a><p>在weblogic的官方文档中 Monitoring and Troubleshooting 标题为 <a href="https://docs.oracle.com/cd/E13209_01/wlcp/wlss30/configwlss/jvmrand.html" target="_blank" rel="noopener">Avoiding JVM Delays Caused By Random Number Generation</a> 的文档</p><p>The library used for random number generation in Sun’s JVM relies on /dev/random by default for UNIX platforms. This can potentially block the WebLogic SIP Server process because on some operating systems /dev/random waits for a certain amount of “noise” to be generated on the host machine before returning a result. Although /dev/random is more secure, BEA recommends using /dev/urandom if the default JVM configuration delays WebLogic SIP Server startup.</p><p>To determine if your operating system exhibits this behavior, try displaying a portion of the file from a shell prompt:</p><p>head -n 1 /dev/random</p><p>If the command returns immediately, you can use /dev/random as the default generator for SUN’s JVM. If the command does not return immediately, use these steps to configure the JVM to use /dev/urandom:</p><pre><code>Open the $JAVA_HOME/jre/lib/security/java.security file in a text editor.Change the line:  securerandom.source=file:/dev/randomto read:  securerandom.source=file:/dev/./urandomSave your change and exit the text editor.</code></pre>]]></content>
     
@@ -67,7 +67,7 @@
     <link href="https://channelsray.github.io/2019/05/22/Linux%E9%85%8D%E7%BD%AEtomcat%E8%87%AA%E5%8A%A8%E5%90%AF%E5%8A%A8/"/>
     <id>https://channelsray.github.io/2019/05/22/Linux配置tomcat自动启动/</id>
     <published>2019-05-22T13:15:00.000Z</published>
-    <updated>2020-01-28T02:37:20.743Z</updated>
+    <updated>2020-01-28T04:20:29.067Z</updated>
     
     <content type="html"><![CDATA[<p>将tomcat配置成linux service，跟随linux启动</p><a id="more"></a> <h2 id="1-编辑tomcat-bin-catalina-sh"><a href="#1-编辑tomcat-bin-catalina-sh" class="headerlink" title="1. 编辑tomcat/bin/catalina.sh"></a>1. 编辑tomcat/bin/catalina.sh</h2><p>在catalina.sh中添加java和tomcat环境变量</p><pre><code class="shell">CATALINA_HOME=/usr/local/tomcatJAVA_HOME=/usr/lib/java/jdk1.7.0_79</code></pre><p>根据实际情况配置环境变量，然后将catalina.sh复制到/etc/init.d/目录下</p><pre><code class="shell">cp tomcat/bin/catalina.sh /etc/init.d/tomcat</code></pre><h2 id="2-更新tomcat-service，并启动："><a href="#2-更新tomcat-service，并启动：" class="headerlink" title="2. 更新tomcat service，并启动："></a>2. 更新tomcat service，并启动：</h2><pre><code class="shell">update-rc.d tomcat defaultsservice tomcat start</code></pre>]]></content>
     
