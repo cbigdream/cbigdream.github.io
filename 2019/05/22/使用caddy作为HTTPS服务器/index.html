@@ -3,7 +3,7 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
   
-  <title>Tomcat启动时卡住不动 - 九住</title>
+  <title>使用caddy作为HTTPS服务器 - 九住</title>
   <meta charset="UTF-8">
   <meta name="description" content>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -11,18 +11,18 @@
   
 
   <link rel="shortcut icon" href="/favicon.ico" type="image/png">
-  <meta name="description" content="tomcat启动以后卡在INFO: Deploying web application directory …">
-<meta name="keywords" content="linux,tomcat">
+  <meta name="description" content="用Caddy的插件forwardproxy可以快速搭建HTTPS服务器，可以不用手动配置ssl证书">
+<meta name="keywords" content="linux,caddy,https">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Tomcat启动时卡住不动">
-<meta property="og:url" content="https://channelsray.github.io/2019/05/23/Tomcat启动时卡住/index.html">
+<meta property="og:title" content="使用caddy作为HTTPS服务器">
+<meta property="og:url" content="https://channelsray.github.io/2019/05/22/使用caddy作为HTTPS服务器/index.html">
 <meta property="og:site_name" content="九住">
-<meta property="og:description" content="tomcat启动以后卡在INFO: Deploying web application directory …">
+<meta property="og:description" content="用Caddy的插件forwardproxy可以快速搭建HTTPS服务器，可以不用手动配置ssl证书">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-28T04:22:32.709Z">
+<meta property="og:updated_time" content="2020-01-28T13:26:36.256Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Tomcat启动时卡住不动">
-<meta name="twitter:description" content="tomcat启动以后卡在INFO: Deploying web application directory …">
+<meta name="twitter:title" content="使用caddy作为HTTPS服务器">
+<meta name="twitter:description" content="用Caddy的插件forwardproxy可以快速搭建HTTPS服务器，可以不用手动配置ssl证书">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.15.8/styles/atom-one-dark.css">
    
@@ -30,7 +30,7 @@
   
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
-  <link rel="stylesheet" href="/css/style.css?v=1580218030790">
+  <link rel="stylesheet" href="/css/style.css?v=1580218030945">
 </head>
 
 <body class="mdui-drawer-body-left">
@@ -152,43 +152,56 @@
         <div class="nexmoe-post">
     <div class="nexmoe-post-cover"> 
         
-        <img src="https://i.loli.net/2020/01/28/BYZE6D47izy1aJq.jpg">
+        <img src="https://i.loli.net/2020/01/28/7zdcqnKFT5CRjku.jpg">
         
-        <h1>Tomcat启动时卡住不动</h1>
+        <h1>使用caddy作为HTTPS服务器</h1>
     </div>
   <div class="nexmoe-post-meta">
-    <a><i class="nexmoefont icon-calendar-fill"></i>2019年05月23日</a>
-    <a><i class="nexmoefont icon-areachart"></i>208 字</a>
+    <a><i class="nexmoefont icon-calendar-fill"></i>2019年05月22日</a>
+    <a><i class="nexmoefont icon-areachart"></i>257 字</a>
     <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
     
       <a class="nexmoefont icon-appstore-fill -link" href="/categories/技术/">技术</a>
     
     
-      <a class="nexmoefont icon-tag-fill -link" href="/tags/linux/">linux</a> <a class="nexmoefont icon-tag-fill -link" href="/tags/tomcat/">tomcat</a>
+      <a class="nexmoefont icon-tag-fill -link" href="/tags/caddy/">caddy</a> <a class="nexmoefont icon-tag-fill -link" href="/tags/https/">https</a> <a class="nexmoefont icon-tag-fill -link" href="/tags/linux/">linux</a>
     
   </div>
   <article>
-    <p>tomcat启动以后卡在INFO: Deploying web application directory …</p>
-<a id="more"></a>
-
-<p>在weblogic的官方文档中 Monitoring and Troubleshooting 标题为 <a href="https://docs.oracle.com/cd/E13209_01/wlcp/wlss30/configwlss/jvmrand.html" target="_blank" rel="noopener">Avoiding JVM Delays Caused By Random Number Generation</a> 的文档</p>
-<p>The library used for random number generation in Sun’s JVM relies on /dev/random by default for UNIX platforms. This can potentially block the WebLogic SIP Server process because on some operating systems /dev/random waits for a certain amount of “noise” to be generated on the host machine before returning a result. Although /dev/random is more secure, BEA recommends using /dev/urandom if the default JVM configuration delays WebLogic SIP Server startup.</p>
-<p>To determine if your operating system exhibits this behavior, try displaying a portion of the file from a shell prompt:</p>
-<p>head -n 1 /dev/random</p>
-<p>If the command returns immediately, you can use /dev/random as the default generator for SUN’s JVM. If the command does not return immediately, use these steps to configure the JVM to use /dev/urandom:</p>
-<pre><code>Open the $JAVA_HOME/jre/lib/security/java.security file in a text editor.
-Change the line:
-  securerandom.source=file:/dev/random
-to read:
-  securerandom.source=file:/dev/./urandom
-Save your change and exit the text editor.</code></pre>
+    <p>用Caddy的插件forwardproxy可以快速搭建HTTPS服务器，可以不用手动配置ssl证书</p>
+<a id="more"></a> 
+<h2 id="1-安装Caddy和Caddy插件forwardproxy"><a href="#1-安装Caddy和Caddy插件forwardproxy" class="headerlink" title="1. 安装Caddy和Caddy插件forwardproxy"></a>1. 安装Caddy和Caddy插件forwardproxy</h2><pre><code>curl https://getcaddy.com | bash -s personal http.forwardproxy</code></pre><p>已经安装过Caddy的也可以使用上述命令，升级Caddy（如果有新版本），并安装插件forwardproxy，随后重启Caddy即可。</p>
+<pre><code>service caddy restart
+OR
+systemctl restart caddy.service</code></pre><h2 id="2-配置caddy"><a href="#2-配置caddy" class="headerlink" title="2. 配置caddy"></a>2. 配置caddy</h2><h3 id="1-创建配置文件放到-etc-caddy-目录"><a href="#1-创建配置文件放到-etc-caddy-目录" class="headerlink" title="1. 创建配置文件放到 /etc/caddy 目录"></a>1. 创建配置文件放到 /etc/caddy 目录</h3><pre><code>sudo mkdir /etc/caddy
+sudo touch /etc/caddy/Caddyfile
+sudo chown -R root:www-data /etc/caddy</code></pre><h3 id="2-配置ssl证书目录"><a href="#2-配置ssl证书目录" class="headerlink" title="2. 配置ssl证书目录"></a>2. 配置ssl证书目录</h3><pre><code>sudo mkdir /etc/ssl/caddy
+sudo chown -R www-data:root /etc/ssl/caddy
+sudo chmod 0770 /etc/ssl/caddy</code></pre><h3 id="3-配置-systemd"><a href="#3-配置-systemd" class="headerlink" title="3. 配置 systemd"></a>3. 配置 systemd</h3><pre><code>sudo curl -s  https://raw.githubusercontent.com/mholt/caddy/master/dist/init/linux-systemd/caddy.service  -o /etc/systemd/system/caddy.service
+sudo systemctl daemon-reload
+sudo systemctl enable caddy.service
+sudo systemctl status caddy.service</code></pre><h3 id="4-配置Caddfile配置文件"><a href="#4-配置Caddfile配置文件" class="headerlink" title="4. 配置Caddfile配置文件"></a>4. 配置Caddfile配置文件</h3><pre><code>域名 {
+    root /data/wwwroot/default
+    tls justforjoy7@gmail.com
+    log stdout 
+    forwardproxy {
+        ports 80 443
+        #basicauth user pass
+        hide_ip
+        hide_via
+    }
+}</code></pre><p>为了掩饰站点，可以在例如/data/wwwroot/default网站目录下放些东西。</p>
+<h3 id="5-通过systemd管理caddy"><a href="#5-通过systemd管理caddy" class="headerlink" title="5. 通过systemd管理caddy"></a>5. 通过systemd管理caddy</h3><pre><code>sudo systemctl start caddy.service
+sudo systemctl stop caddy.service
+sudo systemctl restart caddy.service
+sudo systemctl reload caddy.service</code></pre>
   </article>
   
     
 <div class="nexmoe-post-copyright">
 <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
 <strong>本文作者：</strong>channelsray<br>
-<strong>本文链接：</strong><a href="https://channelsray.github.io/2019/05/23/Tomcat启动时卡住/" title="https://channelsray.github.io/2019/05/23/Tomcat启动时卡住/" target="_blank" rel="noopener">https://channelsray.github.io/2019/05/23/Tomcat启动时卡住/</a><br>
+<strong>本文链接：</strong><a href="https://channelsray.github.io/2019/05/22/使用caddy作为HTTPS服务器/" title="https://channelsray.github.io/2019/05/22/使用caddy作为HTTPS服务器/" target="_blank" rel="noopener">https://channelsray.github.io/2019/05/22/使用caddy作为HTTPS服务器/</a><br>
 
   <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
 
@@ -228,7 +241,7 @@ Save your change and exit the text editor.</code></pre>
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script src="/js/app.js?v=1580218030797"></script>
+<script src="/js/app.js?v=1580218030949"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
 
 

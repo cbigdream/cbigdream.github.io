@@ -110,4 +110,30 @@
     
   </entry>
   
+  <entry>
+    <title>使用caddy作为HTTPS服务器</title>
+    <link href="https://channelsray.github.io/2019/05/22/%E4%BD%BF%E7%94%A8caddy%E4%BD%9C%E4%B8%BAHTTPS%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    <id>https://channelsray.github.io/2019/05/22/使用caddy作为HTTPS服务器/</id>
+    <published>2019-05-22T08:18:06.000Z</published>
+    <updated>2020-01-28T13:26:36.256Z</updated>
+    
+    <content type="html"><![CDATA[<p>用Caddy的插件forwardproxy可以快速搭建HTTPS服务器，可以不用手动配置ssl证书</p><a id="more"></a> <h2 id="1-安装Caddy和Caddy插件forwardproxy"><a href="#1-安装Caddy和Caddy插件forwardproxy" class="headerlink" title="1. 安装Caddy和Caddy插件forwardproxy"></a>1. 安装Caddy和Caddy插件forwardproxy</h2><pre><code>curl https://getcaddy.com | bash -s personal http.forwardproxy</code></pre><p>已经安装过Caddy的也可以使用上述命令，升级Caddy（如果有新版本），并安装插件forwardproxy，随后重启Caddy即可。</p><pre><code>service caddy restartORsystemctl restart caddy.service</code></pre><h2 id="2-配置caddy"><a href="#2-配置caddy" class="headerlink" title="2. 配置caddy"></a>2. 配置caddy</h2><h3 id="1-创建配置文件放到-etc-caddy-目录"><a href="#1-创建配置文件放到-etc-caddy-目录" class="headerlink" title="1. 创建配置文件放到 /etc/caddy 目录"></a>1. 创建配置文件放到 /etc/caddy 目录</h3><pre><code>sudo mkdir /etc/caddysudo touch /etc/caddy/Caddyfilesudo chown -R root:www-data /etc/caddy</code></pre><h3 id="2-配置ssl证书目录"><a href="#2-配置ssl证书目录" class="headerlink" title="2. 配置ssl证书目录"></a>2. 配置ssl证书目录</h3><pre><code>sudo mkdir /etc/ssl/caddysudo chown -R www-data:root /etc/ssl/caddysudo chmod 0770 /etc/ssl/caddy</code></pre><h3 id="3-配置-systemd"><a href="#3-配置-systemd" class="headerlink" title="3. 配置 systemd"></a>3. 配置 systemd</h3><pre><code>sudo curl -s  https://raw.githubusercontent.com/mholt/caddy/master/dist/init/linux-systemd/caddy.service  -o /etc/systemd/system/caddy.servicesudo systemctl daemon-reloadsudo systemctl enable caddy.servicesudo systemctl status caddy.service</code></pre><h3 id="4-配置Caddfile配置文件"><a href="#4-配置Caddfile配置文件" class="headerlink" title="4. 配置Caddfile配置文件"></a>4. 配置Caddfile配置文件</h3><pre><code>域名 {    root /data/wwwroot/default    tls justforjoy7@gmail.com    log stdout     forwardproxy {        ports 80 443        #basicauth user pass        hide_ip        hide_via    }}</code></pre><p>为了掩饰站点，可以在例如/data/wwwroot/default网站目录下放些东西。</p><h3 id="5-通过systemd管理caddy"><a href="#5-通过systemd管理caddy" class="headerlink" title="5. 通过systemd管理caddy"></a>5. 通过systemd管理caddy</h3><pre><code>sudo systemctl start caddy.servicesudo systemctl stop caddy.servicesudo systemctl restart caddy.servicesudo systemctl reload caddy.service</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;用Caddy的插件forwardproxy可以快速搭建HTTPS服务器，可以不用手动配置ssl证书&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="https://channelsray.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="linux" scheme="https://channelsray.github.io/tags/linux/"/>
+    
+      <category term="caddy" scheme="https://channelsray.github.io/tags/caddy/"/>
+    
+      <category term="https" scheme="https://channelsray.github.io/tags/https/"/>
+    
+  </entry>
+  
 </feed>
