@@ -2,30 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://channelsray.github.io/2019/05/23/Tomcat%E5%90%AF%E5%8A%A8%E6%97%B6%E5%8D%A1%E4%BD%8F/</loc>
-    
-    <lastmod>2020-01-28T04:22:32.709Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://channelsray.github.io/2019/05/22/Linux%E9%85%8D%E7%BD%AEtomcat%E8%87%AA%E5%8A%A8%E5%90%AF%E5%8A%A8/</loc>
-    
-    <lastmod>2020-01-28T04:20:29.067Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://channelsray.github.io/tags/index.html</loc>
     
-    <lastmod>2020-01-28T02:37:20.764Z</lastmod>
+    <lastmod>2020-01-28T08:53:26.255Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://channelsray.github.io/categories/index.html</loc>
     
-    <lastmod>2020-01-28T02:37:20.763Z</lastmod>
+    <lastmod>2020-01-28T08:53:21.679Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://channelsray.github.io/2019/05/22/Linux%E9%85%8D%E7%BD%AEtomcat%E8%87%AA%E5%8A%A8%E5%90%AF%E5%8A%A8/</loc>
+    
+    <lastmod>2020-01-28T04:53:03.480Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://channelsray.github.io/2019/05/23/Tomcat%E5%90%AF%E5%8A%A8%E6%97%B6%E5%8D%A1%E4%BD%8F/</loc>
+    
+    <lastmod>2020-01-28T04:22:32.709Z</lastmod>
     
   </url>
   
