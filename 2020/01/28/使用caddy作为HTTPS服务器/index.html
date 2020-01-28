@@ -3,7 +3,7 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
   
-  <title>分类：博客 - 九住</title>
+  <title>使用caddy作为HTTPS服务器 - 九住</title>
   <meta charset="UTF-8">
   <meta name="description" content>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -11,13 +11,18 @@
   
 
   <link rel="shortcut icon" href="/favicon.ico" type="image/png">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="九住">
-<meta property="og:url" content="https://channelsray.github.io/categories/博客/index.html">
+  <meta name="description" content="用Caddy的插件forwardproxy可以快速搭建HTTPS服务器，可以不用手动配置ssl证书">
+<meta name="keywords" content="linux,caddy,https">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用caddy作为HTTPS服务器">
+<meta property="og:url" content="https://channelsray.github.io/2020/01/28/使用caddy作为HTTPS服务器/index.html">
 <meta property="og:site_name" content="九住">
+<meta property="og:description" content="用Caddy的插件forwardproxy可以快速搭建HTTPS服务器，可以不用手动配置ssl证书">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-01-28T09:55:33.656Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="九住">
+<meta name="twitter:title" content="使用caddy作为HTTPS服务器">
+<meta name="twitter:description" content="用Caddy的插件forwardproxy可以快速搭建HTTPS服务器，可以不用手动配置ssl证书">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.15.8/styles/atom-one-dark.css">
    
@@ -25,7 +30,7 @@
   
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
-  <link rel="stylesheet" href="/css/style.css?v=1580205359175">
+  <link rel="stylesheet" href="/css/style.css?v=1580205359337">
 </head>
 
 <body class="mdui-drawer-body-left">
@@ -169,37 +174,83 @@
   </div>
   <div id="nexmoe-content">
     <div class="nexmoe-primary">
-        <section class="nexmoe-posts" id="brand-waterfall">
-    
-    <div class="nexmoe-post">
-        <a href="/2019/05/23/VSCode插件提升hexo体验/">
-            <div class="nexmoe-post-cover mdui-ripple"> 
-                
-                    <img src="https://i.loli.net/2019/01/13/5c3aec85a4343.jpg" alt="VSCode插件提升hexo体验">
-                
-                <h1>VSCode插件提升hexo体验</h1>
-            </div>
-        </a>
-        <div class="nexmoe-post-meta">
-            <a><i class="nexmoefont icon-calendar-fill"></i>2019年05月23日</a>
-            <a><i class="nexmoefont icon-areachart"></i>272 字</a>
-            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
-            
-                <a class="nexmoefont icon-appstore-fill -link" href="/categories/博客/">博客</a>
-            
-            
-                <a class="nexmoefont icon-tag-fill -link" href="/tags/hexo/">hexo</a>
-            
-        </div>
-        <article>
-            
-            <p>Hexo的编写与部署可以通过vscode进行，同时通过对插件的使用也可以增强体验，提升效率</p>
-            
-        </article>
+        <div class="nexmoe-post">
+    <div class="nexmoe-post-cover"> 
+        
+            <img src="https://i.loli.net/2019/01/13/5c3aec85a4343.jpg">
+        
+        <h1>使用caddy作为HTTPS服务器</h1>
     </div>
+  <div class="nexmoe-post-meta">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2020年01月28日</a>
+    <a><i class="nexmoefont icon-areachart"></i>257 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
     
-</section>
+      <a class="nexmoefont icon-appstore-fill -link" href="/categories/技术/">技术</a>
+    
+    
+      <a class="nexmoefont icon-tag-fill -link" href="/tags/caddy/">caddy</a> <a class="nexmoefont icon-tag-fill -link" href="/tags/https/">https</a> <a class="nexmoefont icon-tag-fill -link" href="/tags/linux/">linux</a>
+    
+  </div>
+  <article>
+    <p>用Caddy的插件forwardproxy可以快速搭建HTTPS服务器，可以不用手动配置ssl证书</p>
+<a id="more"></a> 
+<h2 id="1-安装Caddy和Caddy插件forwardproxy"><a href="#1-安装Caddy和Caddy插件forwardproxy" class="headerlink" title="1. 安装Caddy和Caddy插件forwardproxy"></a>1. 安装Caddy和Caddy插件forwardproxy</h2><pre><code>curl https://getcaddy.com | bash -s personal http.forwardproxy</code></pre><p>已经安装过Caddy的也可以使用上述命令，升级Caddy（如果有新版本），并安装插件forwardproxy，随后重启Caddy即可。</p>
+<pre><code>service caddy restart
+OR
+systemctl restart caddy.service</code></pre><h2 id="2-配置caddy"><a href="#2-配置caddy" class="headerlink" title="2. 配置caddy"></a>2. 配置caddy</h2><h3 id="1-创建配置文件放到-etc-caddy-目录"><a href="#1-创建配置文件放到-etc-caddy-目录" class="headerlink" title="1. 创建配置文件放到 /etc/caddy 目录"></a>1. 创建配置文件放到 /etc/caddy 目录</h3><pre><code>sudo mkdir /etc/caddy
+sudo touch /etc/caddy/Caddyfile
+sudo chown -R root:www-data /etc/caddy</code></pre><h3 id="2-配置ssl证书目录"><a href="#2-配置ssl证书目录" class="headerlink" title="2. 配置ssl证书目录"></a>2. 配置ssl证书目录</h3><pre><code>sudo mkdir /etc/ssl/caddy
+sudo chown -R www-data:root /etc/ssl/caddy
+sudo chmod 0770 /etc/ssl/caddy</code></pre><h3 id="3-配置-systemd"><a href="#3-配置-systemd" class="headerlink" title="3. 配置 systemd"></a>3. 配置 systemd</h3><pre><code>sudo curl -s  https://raw.githubusercontent.com/mholt/caddy/master/dist/init/linux-systemd/caddy.service  -o /etc/systemd/system/caddy.service
+sudo systemctl daemon-reload
+sudo systemctl enable caddy.service
+sudo systemctl status caddy.service</code></pre><h3 id="4-配置Caddfile配置文件"><a href="#4-配置Caddfile配置文件" class="headerlink" title="4. 配置Caddfile配置文件"></a>4. 配置Caddfile配置文件</h3><pre><code>域名 {
+    root /data/wwwroot/default
+    tls justforjoy7@gmail.com
+    log stdout 
+    forwardproxy {
+        ports 80 443
+        #basicauth user pass
+        hide_ip
+        hide_via
+    }
+}</code></pre><p>为了掩饰站点，可以在例如/data/wwwroot/default网站目录下放些东西。</p>
+<h3 id="5-通过systemd管理caddy"><a href="#5-通过systemd管理caddy" class="headerlink" title="5. 通过systemd管理caddy"></a>5. 通过systemd管理caddy</h3><pre><code>sudo systemctl start caddy.service
+sudo systemctl stop caddy.service
+sudo systemctl restart caddy.service
+sudo systemctl reload caddy.service</code></pre>
+  </article>
+  
+    
+<div class="nexmoe-post-copyright">
+<i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+<strong>本文作者：</strong>channelsray<br>
+<strong>本文链接：</strong><a href="https://channelsray.github.io/2020/01/28/使用caddy作为HTTPS服务器/" title="https://channelsray.github.io/2020/01/28/使用caddy作为HTTPS服务器/" target="_blank" rel="noopener">https://channelsray.github.io/2020/01/28/使用caddy作为HTTPS服务器/</a><br>
 
+  <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+
+</div>
+
+
+  
+  <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '80b2453b6d5f37ad6225',
+        clientSecret: '43e99fa852795c9a7b3eb924b2558c64b84bbdeb',
+        id: window.location.pathname,
+        repo: 'nexmoe.github.io',
+        owner: 'nexmoe',
+        admin: 'nexmoe'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+</div>
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/js/mdui.min.js"></script>
@@ -215,7 +266,7 @@
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script src="/js/app.js?v=1580205359186"></script>
+<script src="/js/app.js?v=1580205359347"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
 
 
