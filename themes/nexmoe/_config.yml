@@ -49,15 +49,15 @@ menu:
   文章归档: 
    - /archives
    - icon-container
-  关于博客:
-    - /about.html
-    - icon-info-circle
-  我的朋友: 
-    - /PY.html
+  # 关于博客:
+  #   - /about.html
+  #   - icon-info-circle
+  # 我的朋友: 
+  #   - /PY.html
 
 widgets:
   - search
-  - social
+  # - social
   - category
   - tagcloud
   - archive

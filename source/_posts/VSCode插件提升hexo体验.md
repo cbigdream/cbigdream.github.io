@@ -1,7 +1,8 @@
 ---
 title: VSCode插件提升hexo体验
 date: 2019-05-23 15:19:07
-categories: 博客
+categories: 静态博客
+cover: https://i.loli.net/2020/01/28/RB47StXubNqiFmf.jpg
 tags: hexo
 ---
 Hexo的编写与部署可以通过vscode进行，同时通过对插件的使用也可以增强体验，提升效率
