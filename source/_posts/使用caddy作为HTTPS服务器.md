@@ -1,6 +1,6 @@
 ---
 title: 使用caddy作为HTTPS服务器
-date: 2019-05-22 16:18:06
+date: 2020-01-28 21:18:06
 categories: 技术
 cover: https://i.loli.net/2020/01/28/7zdcqnKFT5CRjku.jpg
 tags: [linux,caddy,https]
